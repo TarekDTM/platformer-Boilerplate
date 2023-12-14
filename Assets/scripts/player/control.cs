@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
         bool wasOnGround = onGround;
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
 
+        animator.SetBool("onGround", onGround);
         if(!wasOnGround && onGround){
             StartCoroutine(JumpSqueeze(1.25f, 0.8f, 0.05f));
         }
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour {
         if(Input.GetButtonDown("Jump")){
             jumpTimer = Time.time + jumpDelay;
         }
-        animator.SetBool("onGround", onGround);
+       
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
     void FixedUpdate() {
