@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,8 +33,8 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        bool wasOnGround = onGround;
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
+        bool wasOnGround = onGround;
 
         animator.SetBool("onGround", onGround);
         if(!wasOnGround && onGround){
