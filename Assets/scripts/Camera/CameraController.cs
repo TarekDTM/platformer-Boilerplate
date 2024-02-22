@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
             newPostion.x = follow.x;
         }
         if(Mathf.Abs(yDifference) >= threshold.y){
-            newPostion.x = follow.x;
+            newPostion.y = follow.y;
         }
         float moveSpeed = followObjectRb.velocity.magnitude > speed ? followObjectRb.velocity.magnitude : speed;
         transform.position = Vector3.MoveTowards(transform.position, newPostion, moveSpeed * Time.deltaTime );
